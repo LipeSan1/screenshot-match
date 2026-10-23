@@ -22,6 +22,7 @@ export interface Product {
   slug: string;
   name: string;
   fullName: string;
+  category: string;
   /** Preço em reais. null = a definir. */
   price: number | null;
   availability: Availability;
@@ -38,11 +39,21 @@ export interface Product {
   faq: { q: string; a: string }[];
 }
 
+function pendingProduct(slug: string, name: string, category: string, shortDescription: string): Product {
+  return {
+    slug, name, fullName: name, category, price: null, availability: "pending", checkoutUrl: "", images: [],
+    shortDescription,
+    description: "Estamos confirmando fotos oficiais, especificações, preço de venda e disponibilidade deste item. A compra será liberada depois que essas informações forem verificadas.",
+    highlights: [], specs: [], included: [], deliveryInfo: "", faq: [],
+  };
+}
+
 export const PRODUCTS: Product[] = [
   {
     slug: "projetor-natalino-led",
     name: "Projetor Natalino LED",
     fullName: "Projetor LED Natalino Desenhos Decorativos Luzes Dinâmicas USB Bivolt — Cores Sortidas",
+    category: "Casa e decoração",
     price: null,
     availability: "pending",
     checkoutUrl: "",
@@ -76,6 +87,19 @@ export const PRODUCTS: Product[] = [
       { q: "O que vem na caixa?", a: "1 projetor e o manual de instruções." },
     ],
   },
+  pendingProduct("caneta-depiladora-sobrancelha", "Caneta Depiladora Elétrica para Sobrancelha", "Beleza e cuidados", "Caneta elétrica recarregável para sobrancelhas, conforme o anúncio enviado."),
+  pendingProduct("joelheiras-compressao-par", "Par de Joelheiras de Compressão MWKS", "Bem-estar", "Par de joelheiras de compressão, conforme o anúncio enviado."),
+  pendingProduct("aparador-barba-3-em-1", "Aparador de Barba e Pelos 3 em 1", "Beleza e cuidados", "Aparador recarregável 3 em 1 para barba e pelos."),
+  pendingProduct("game-stick-retro-4k", "Game Stick 4K Retrô — 10.000 Jogos", "Eletrônicos", "Game stick retrô anunciado com 10.000 jogos; detalhes em confirmação."),
+  pendingProduct("irrigador-bucal-portatil", "Irrigador Bucal Portátil", "Higiene pessoal", "Irrigador bucal portátil de alta pressão, conforme o anúncio enviado."),
+  pendingProduct("mini-aspirador-automotivo", "Mini Aspirador Automotivo Portátil", "Automotivo", "Mini aspirador portátil recarregável para uso automotivo."),
+  pendingProduct("fone-bluetooth-p9-prata", "Fone Bluetooth P9 — Prata", "Eletrônicos", "Fone sem fio P9 na cor prata, conforme o anúncio enviado."),
+  pendingProduct("robo-aspirador-recarregavel", "Robô Aspirador de Pó Recarregável", "Casa e decoração", "Robô aspirador anunciado como 110 V e em cores sortidas."),
+  pendingProduct("escova-secadora-2-em-1", "Escova Secadora 2 em 1", "Beleza e cuidados", "Escova secadora 2 em 1, conforme o anúncio enviado."),
+  pendingProduct("mini-massageador-eletrico", "Mini Massageador Elétrico Portátil", "Bem-estar", "Mini massageador elétrico portátil recarregável."),
+  pendingProduct("joelheira-compressao-unidade", "Joelheira de Compressão — Unidade", "Bem-estar", "Joelheira de compressão individual, conforme o anúncio enviado."),
+  pendingProduct("arvore-natal-120cm", "Árvore de Natal Pinheiro Verde — 120 cm", "Casa e decoração", "Árvore de Natal anunciada com 100 ramos e 120 cm de altura."),
+  pendingProduct("canivete-dobravel-preto", "Canivete Dobrável Preto em Aço Inox", "Acessórios e ferramentas", "Canivete dobrável preto, conforme o anúncio enviado."),
 ];
 
 export const getProduct = (slug: string) => PRODUCTS.find((p) => p.slug === slug);
