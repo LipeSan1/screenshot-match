@@ -10,8 +10,8 @@ export const KAIROSS_CHECKOUT_URL = "";
 export const STORE = {
   name: "Morning Shop",
   /** Número de WhatsApp com DDI e DDD, só dígitos. Ex.: "5511999999999" */
-  whatsappNumber: "",
-  email: "",
+  whatsappNumber: "5511993219994",
+  email: "Felipe.emprebc@icloud.com",
   /** Texto padrão de prazo de entrega exibido no site. */
   deliveryInfo: "",
 };
