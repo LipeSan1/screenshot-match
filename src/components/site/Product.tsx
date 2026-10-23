@@ -22,7 +22,7 @@ function ImagePlaceholder({ className = "" }: { className?: string }) {
 export function Gallery({ product }: { product: Product }) {
   const [i, setI] = useState(0);
   if (!product.images.length) return <ImagePlaceholder />;
-  const cur = product.images[i];
+  const cur = product.images[i] ?? product.images[0]!;
   return (
     <div>
       <img src={cur.src} alt={cur.alt} className="aspect-square w-full rounded-2xl object-cover" />
