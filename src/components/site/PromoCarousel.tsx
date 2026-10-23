@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import emblema from "@/assets/morning-shop-emblema.png.asset.json";
 import { type Product } from "@/config/store";
 import { btn } from "@/components/site/Layout";
 
@@ -66,7 +67,7 @@ export function PromoCarousel({ product }: { product: Product }) {
         </div>
         <div aria-hidden className="hidden items-center justify-center md:flex">
           <div className="flex h-48 w-48 items-center justify-center rounded-full border border-primary/40 bg-secondary/40 shadow-glow">
-            <span className="font-display text-center text-2xl font-extrabold text-brand-gradient">MORNING<br />SHOP</span>
+            <img src={emblema.url} alt="" width={170} height={170} loading="lazy" decoding="async" className="h-40 w-40 object-contain drop-shadow-[0_0_24px_var(--cyan)]" />
           </div>
         </div>
       </div>
