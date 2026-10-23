@@ -24,7 +24,7 @@ const STEPS = [
 ];
 
 function Index() {
-  const featured = PRODUCTS[0];
+  const featured = PRODUCTS[0]!;
   return (
     <main>
       <section className="relative overflow-hidden bg-hero-glow">
