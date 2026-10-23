@@ -82,9 +82,15 @@ export const getProduct = (slug: string) => PRODUCTS.find((p) => p.slug === slug
 
 /** Retorna o link de compra válido do produto, ou null se ainda não configurado. */
 export function resolveCheckoutUrl(p: Pick<Product, "checkoutUrl" | "availability">, fallback = KAIROSS_CHECKOUT_URL): string | null {
-  if (p.availability === "unavailable") return null;
-  const url = (p.checkoutUrl || fallback).trim();
-  return /^https:\/\//.test(url) ? url : null;
+  if (p.availability !== "available") return null;
+
+  const url = (p.checkoutUrl.trim() || fallback).trim();
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.protocol === "https:" && parsedUrl.hostname ? url : null;
+  } catch {
+    return null;
+  }
 }
 
 export function whatsappLink(message?: string): string | null {
@@ -95,3 +101,4 @@ export function whatsappLink(message?: string): string | null {
 
 export const formatPrice = (v: number | null) =>
   v === null ? null : v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+

@@ -82,10 +82,12 @@ export function BuyActions({ product }: { product: Product }) {
 export function ProductCard({ product }: { product: Product }) {
   return (
     <Link to="/produtos/$slug" params={{ slug: product.slug }}
-      className="group block rounded-2xl border bg-card p-4 transition hover:border-primary/60 hover:shadow-glow">
-      <ProductImage product={product} />
-      <h3 className="mt-4 text-lg group-hover:text-primary">{product.name}</h3>
-      <p className="mt-1 text-sm text-muted-foreground">{product.shortDescription}</p>
+      className="group flex h-full flex-col rounded-2xl border bg-card p-4 transition hover:border-primary/60 hover:shadow-glow">
+      <div className="overflow-hidden rounded-2xl">
+        <ProductImage product={product} className="transition-transform duration-300 group-hover:scale-[1.03]" />
+      </div>
+      <h3 className="mt-4 min-h-14 line-clamp-2 text-lg group-hover:text-primary">{product.name}</h3>
+      <p className="mt-1 min-h-18 flex-1 line-clamp-3 text-sm text-muted-foreground">{product.shortDescription}</p>
       <div className="mt-3"><Price product={product} /></div>
     </Link>
   );
@@ -105,3 +107,4 @@ export function FaqList({ items }: { items: { q: string; a: string }[] }) {
     </div>
   );
 }
+

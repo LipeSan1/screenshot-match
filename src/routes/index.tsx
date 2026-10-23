@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import emblema from "@/assets/morning-shop-emblema.png.asset.json";
-import { PRODUCTS } from "@/config/store";
+import { PRODUCTS, resolveCheckoutUrl } from "@/config/store";
 import { GENERAL_FAQ } from "@/config/faq";
 import { btn } from "@/components/site/Layout";
 import { FaqList, Price, ProductImage } from "@/components/site/Product";
@@ -25,6 +25,7 @@ const STEPS = [
 
 function Index() {
   const featured = PRODUCTS[0]!;
+  const checkoutUrl = resolveCheckoutUrl(featured);
   return (
     <main>
       <section className="relative overflow-hidden bg-hero-glow">
@@ -63,15 +64,21 @@ function Index() {
 
       <section className="mx-auto max-w-6xl px-4 py-16" aria-labelledby="como">
         <h2 id="como" className="text-3xl">Como comprar</h2>
-        <ol className="mt-8 grid gap-5 md:grid-cols-3">
-          {STEPS.map(([t, d], i) => (
-            <li key={t} className="rounded-2xl border bg-card p-6">
-              <span className="font-display text-4xl font-extrabold text-brand-gradient">{i + 1}</span>
-              <h3 className="mt-2 text-lg">{t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{d}</p>
-            </li>
-          ))}
-        </ol>
+        {checkoutUrl ? (
+          <ol className="mt-8 grid gap-5 md:grid-cols-3">
+            {STEPS.map(([t, d], i) => (
+              <li key={t} className="rounded-2xl border bg-card p-6">
+                <span className="font-display text-4xl font-extrabold text-brand-gradient">{i + 1}</span>
+                <h3 className="mt-2 text-lg">{t}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{d}</p>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p role="status" className="mt-8 max-w-3xl rounded-2xl border bg-card p-6 text-muted-foreground">
+            No momento, a compra deste produto ainda não está disponível. Consulte a página do produto para ver as informações atuais.
+          </p>
+        )}
       </section>
 
       <section className="mx-auto max-w-3xl px-4 py-16" aria-labelledby="faq">
@@ -92,3 +99,4 @@ function Index() {
     </main>
   );
 }
+
