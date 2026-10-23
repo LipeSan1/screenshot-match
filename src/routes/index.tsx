@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import emblema from "@/assets/morning-shop-emblema.png.asset.json";
 import { PRODUCTS, resolveCheckoutUrl } from "@/config/store";
 import { GENERAL_FAQ } from "@/config/faq";
 import { btn } from "@/components/site/Layout";
 import { FaqList, Price, ProductImage } from "@/components/site/Product";
+import { PromoCarousel } from "@/components/site/PromoCarousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,21 +28,8 @@ function Index() {
   const checkoutUrl = resolveCheckoutUrl(featured);
   return (
     <main>
-      <section className="relative overflow-hidden bg-hero-glow">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
-          <div>
-            <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-primary">Coleção de Natal</p>
-            <h1 className="mt-4 text-4xl leading-tight md:text-6xl">
-              Ilumine o seu Natal com o <span className="text-brand-gradient">Projetor LED</span>
-            </h1>
-            <p className="mt-5 max-w-md text-lg text-muted-foreground">{featured.shortDescription}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/produtos/$slug" params={{ slug: featured.slug }} className={btn("primary", "h-12 px-7")}>Conhecer o produto</Link>
-              <Link to="/produtos" className={btn("outline", "h-12 px-7")}>Ver catálogo</Link>
-            </div>
-          </div>
-          <img src={emblema.url} alt="" aria-hidden width={420} height={420} className="mx-auto w-64 drop-shadow-[0_0_40px_var(--cyan)] md:w-[420px]" />
-        </div>
+      <section className="mx-auto max-w-6xl px-4 py-8 md:py-12">
+        <PromoCarousel product={featured} />
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16" aria-labelledby="destaque">

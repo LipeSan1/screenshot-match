@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImageOff, MessageCircle, ShoppingBag } from "lucide-react";
 import { type Product, formatPrice, resolveCheckoutUrl, whatsappLink } from "@/config/store";
 import { Pending, btn } from "./Layout";
 
-export function ProductImage({ product, className = "" }: { product: Product; className?: string }) {
-  const img = product.images[0];
-  if (img) return <img src={img.src} alt={img.alt} loading="lazy" className={`aspect-square w-full rounded-2xl object-cover ${className}`} />;
+export function ProductImage({ product, className = "", imageIndex = 0 }: { product: Product; className?: string; imageIndex?: number }) {
+  const img = product.images[imageIndex] ?? product.images[0];
+  if (img) return <img src={img.src} alt={img.alt} loading="lazy" decoding="async" className={`aspect-square w-full rounded-2xl object-cover ${className}`} />;
   return <ImagePlaceholder className={className} />;
 }
 
@@ -80,11 +80,24 @@ export function BuyActions({ product }: { product: Product }) {
 }
 
 export function ProductCard({ product }: { product: Product }) {
+  const [active, setActive] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+  useEffect(() => {
+    if (!active || product.images.length < 2) {
+      setImageIndex(0);
+      return;
+    }
+    const timer = window.setInterval(() => setImageIndex((current) => (current + 1) % product.images.length), 1800);
+    return () => window.clearInterval(timer);
+  }, [active, product.images.length]);
+
   return (
     <Link to="/produtos/$slug" params={{ slug: product.slug }}
+      onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}
+      onFocus={() => setActive(true)} onBlur={() => setActive(false)}
       className="group flex h-full flex-col rounded-2xl border bg-card p-4 transition hover:border-primary/60 hover:shadow-glow">
       <div className="overflow-hidden rounded-2xl">
-        <ProductImage product={product} className="transition-transform duration-300 group-hover:scale-[1.03]" />
+        <ProductImage product={product} imageIndex={imageIndex} className="transition-transform duration-300 group-hover:scale-[1.03]" />
       </div>
       <h3 className="mt-4 min-h-14 line-clamp-2 text-lg group-hover:text-primary">{product.name}</h3>
       <p className="mt-1 min-h-18 flex-1 line-clamp-3 text-sm text-muted-foreground">{product.shortDescription}</p>
