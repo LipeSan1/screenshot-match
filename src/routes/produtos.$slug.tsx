@@ -53,7 +53,10 @@ function ProductPage() {
             <p className="mt-1 text-muted-foreground">{delivery || <Pending>Frete e prazo a definir</Pending>}</p>
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
-            Preço, frete e condições finais são exibidos no checkout antes da confirmação do pagamento. Veja nossa{" "}
+            {p.availability === "available"
+              ? "Preço, frete e condições finais são exibidos no checkout antes da confirmação do pagamento. "
+              : "Este produto ainda está em cadastro. Preço, fotos, disponibilidade e condições de entrega serão confirmados antes da liberação da compra. "}
+            Veja nossa{" "}
             <Link to="/trocas-e-devolucoes" className="text-primary hover:underline">política de trocas</Link>.
           </p>
         </div>
