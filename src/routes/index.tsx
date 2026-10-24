@@ -12,6 +12,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Morning Shop: decoração e novidades com entrega para todo o Brasil. Conheça o Projetor Natalino LED." },
       { property: "og:title", content: "Morning Shop — Projetor Natalino LED e mais" },
       { property: "og:description", content: "Conheça o Projetor Natalino LED na Morning Shop." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,

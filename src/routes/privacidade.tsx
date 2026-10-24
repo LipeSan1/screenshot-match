@@ -8,6 +8,8 @@ export const Route = createFileRoute("/privacidade")({
       { name: "description", content: "Como a Morning Shop trata seus dados." },
       { property: "og:title", content: "Política de privacidade — Morning Shop" },
       { property: "og:description", content: "Como a Morning Shop trata seus dados." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (

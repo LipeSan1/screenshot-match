@@ -11,6 +11,8 @@ export const Route = createFileRoute("/perguntas-frequentes")({
       { name: "description", content: "Respostas para as dúvidas mais comuns sobre compras na Morning Shop." },
       { property: "og:title", content: "Perguntas frequentes — Morning Shop" },
       { property: "og:description", content: "Dúvidas comuns sobre compras na Morning Shop." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (

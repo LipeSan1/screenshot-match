@@ -8,6 +8,8 @@ export const Route = createFileRoute("/trocas-e-devolucoes")({
       { name: "description", content: "Política de trocas, devoluções e cancelamentos da Morning Shop." },
       { property: "og:title", content: "Trocas e devoluções — Morning Shop" },
       { property: "og:description", content: "Política de trocas, devoluções e cancelamentos." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (

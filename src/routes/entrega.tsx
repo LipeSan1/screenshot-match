@@ -9,6 +9,8 @@ export const Route = createFileRoute("/entrega")({
       { name: "description", content: "Prazos, frete e acompanhamento de pedidos da Morning Shop." },
       { property: "og:title", content: "Informações de entrega — Morning Shop" },
       { property: "og:description", content: "Prazos, frete e acompanhamento de pedidos." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (
