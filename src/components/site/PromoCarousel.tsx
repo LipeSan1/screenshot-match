@@ -62,7 +62,7 @@ export function PromoCarousel({ product }: { product: Product }) {
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground line-clamp-3">{slide.copy}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/produtos/$slug" params={{ slug: product.slug }} className={btn("primary", "h-12 px-7")}>{slide.label}</Link>
-            <Link to="/produtos" className={btn("outline", "h-12 px-7")}>Ver catálogo</Link>
+            <Link to="/produtos" search={{ q: "" }} className={btn("outline", "h-12 px-7")}>Ver catálogo</Link>
           </div>
         </div>
         <div aria-hidden className="hidden items-center justify-center md:flex">

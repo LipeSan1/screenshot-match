@@ -27,7 +27,7 @@ export const Route = createFileRoute("/produtos/$slug")({
     <main className="mx-auto max-w-xl px-4 py-24 text-center">
       <h1 className="text-3xl">Produto não encontrado</h1>
       <p className="mt-3 text-muted-foreground">Este produto não existe ou não está mais disponível.</p>
-      <Link to="/produtos" className={btn("primary", "mt-6 h-12 px-7")}>Ver produtos</Link>
+      <Link to="/produtos" search={{ q: "" }} className={btn("primary", "mt-6 h-12 px-7")}>Ver produtos</Link>
     </main>
   ),
   component: ProductPage,
@@ -40,7 +40,7 @@ function ProductPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
       <nav aria-label="Trilha" className="mb-6 text-sm text-muted-foreground">
-        <Link to="/produtos" className="hover:text-primary">Produtos</Link> / <span>{p.name}</span>
+        <Link to="/produtos" search={{ q: "" }} className="hover:text-primary">Produtos</Link> / <span>{p.name}</span>
       </nav>
       <div className="grid gap-10 md:grid-cols-2">
         <Gallery product={p} />

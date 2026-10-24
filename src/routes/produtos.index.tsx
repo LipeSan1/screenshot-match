@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 
 export const Route = createFileRoute("/produtos/")({
   validateSearch: (search: Record<string, unknown>) => ({
-    q: typeof search.q === "string" ? search.q : "",
+    q: typeof search['q'] === "string" ? search['q'] : "",
   }),
   head: () => ({
     meta: [
