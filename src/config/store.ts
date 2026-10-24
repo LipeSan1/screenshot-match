@@ -9,11 +9,14 @@ export const KAIROSS_CHECKOUT_URL = "";
 
 export const STORE = {
   name: "Morning Shop",
+  cnpj: "65.660.107/0001-01",
+  address: "Rua Fortaleza de Minas, 257 - Vila Barros - Guarulhos - SP",
   /** Número de WhatsApp com DDI e DDD, só dígitos. Ex.: "5511999999999" */
   whatsappNumber: "5511993219994",
   email: "Felipe.emprebc@icloud.com",
+  supportHours: "Segunda a sexta, das 09:00 às 17:00 (exceto feriados)",
   /** Texto padrão de prazo de entrega exibido no site. */
-  deliveryInfo: "",
+  deliveryInfo: "De 2 a 8 dias úteis após a confirmação do pagamento.",
 };
 
 export type Availability = "available" | "unavailable" | "pending";
