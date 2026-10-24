@@ -10,6 +10,8 @@ export const Route = createFileRoute("/contato")({
       { name: "description", content: "Fale com a Morning Shop." },
       { property: "og:title", content: "Contato — Morning Shop" },
       { property: "og:description", content: "Fale com a Morning Shop." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contact,

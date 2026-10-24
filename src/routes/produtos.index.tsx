@@ -14,6 +14,8 @@ export const Route = createFileRoute("/produtos/")({
       { name: "description", content: "Catálogo de produtos da Morning Shop." },
       { property: "og:title", content: "Produtos — Morning Shop" },
       { property: "og:description", content: "Catálogo de produtos da Morning Shop." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Catalog,
