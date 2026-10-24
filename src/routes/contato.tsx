@@ -33,6 +33,8 @@ function Contact() {
           {STORE.email ? <a href={`mailto:${STORE.email}`} className="mt-2 block text-primary hover:underline">{STORE.email}</a> : <p className="mt-2"><Pending>E-mail a definir</Pending></p>}
         </div>
       </div>
+      <p><strong className="text-foreground">Horário de atendimento:</strong> {STORE.supportHours}</p>
+      <p><strong className="text-foreground">Endereço:</strong> {STORE.address} · CNPJ {STORE.cnpj}</p>
     </PageShell>
   );
 }

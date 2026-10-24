@@ -60,11 +60,15 @@ export function SiteFooter() {
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>{STORE.email || <Pending>E-mail a definir</Pending>}</li>
             <li>{STORE.whatsappNumber ? `WhatsApp +${STORE.whatsappNumber}` : <Pending>WhatsApp a definir</Pending>}</li>
+            <li>{STORE.supportHours}</li>
             <li><Link to="/contato" className="text-primary hover:underline">Página de contato</Link></li>
           </ul>
         </div>
       </div>
-      <p className="border-t py-5 text-center text-xs text-muted-foreground">© {new Date().getFullYear()} Morning Shop</p>
+      <div className="border-t px-4 py-5 text-center text-xs text-muted-foreground">
+        <p>© {new Date().getFullYear()} {STORE.name} · CNPJ {STORE.cnpj}</p>
+        <p className="mt-1">{STORE.address}</p>
+      </div>
     </footer>
   );
 }
