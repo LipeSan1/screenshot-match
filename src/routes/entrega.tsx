@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell, Pending } from "@/components/site/Layout";
+import { PageShell } from "@/components/site/Layout";
 import { STORE } from "@/config/store";
 
 export const Route = createFileRoute("/entrega")({
@@ -16,11 +16,15 @@ export const Route = createFileRoute("/entrega")({
   component: () => (
     <PageShell title="Informações de entrega">
       <h2>Prazo</h2>
-      <p>{STORE.deliveryInfo || <Pending>Prazo de entrega a definir</Pending>}</p>
+      <p>{STORE.deliveryInfo} O prazo começa a contar após a aprovação do pagamento (Pix e cartão costumam ser aprovados na hora; boleto em até 3 dias úteis).</p>
       <h2>Frete</h2>
-      <p>O valor do frete é exibido no checkout antes da confirmação do pagamento. <Pending>Regiões atendidas a definir</Pending></p>
+      <p>Entregamos para todo o Brasil. O valor do frete é exibido no checkout antes da confirmação do pagamento.</p>
       <h2>Rastreamento</h2>
-      <p><Pending>Forma de envio do código de rastreio a definir</Pending></p>
+      <p>Assim que o pedido for enviado, você recebe o código de rastreio por e-mail ou WhatsApp para acompanhar a entrega.</p>
+      <h2>Ausência ou endereço incorreto</h2>
+      <p>Confira o endereço com atenção no checkout. Se a entrega não for concluída por ausência ou endereço incorreto e o pedido retornar, entraremos em contato para combinar um novo envio.</p>
+      <h2>Dúvidas</h2>
+      <p>Fale conosco pelo WhatsApp ou pelo e-mail {STORE.email}. Atendimento: {STORE.supportHours}.</p>
     </PageShell>
   ),
 });

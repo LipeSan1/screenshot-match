@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell, Pending } from "@/components/site/Layout";
+import { PageShell } from "@/components/site/Layout";
+import { STORE } from "@/config/store";
 
 export const Route = createFileRoute("/privacidade")({
   head: () => ({
@@ -13,13 +14,19 @@ export const Route = createFileRoute("/privacidade")({
     ],
   }),
   component: () => (
-    <PageShell title="Política de privacidade" intro="Texto em elaboração. Revise com orientação jurídica antes de publicar.">
-      <h2>Dados coletados</h2>
-      <p>Este site não possui cadastro nem armazena dados bancários ou de cartão. Os pagamentos são processados no ambiente do checkout do parceiro.</p>
+    <PageShell title="Política de privacidade" intro="Esta política explica como tratamos seus dados pessoais, de acordo com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).">
       <h2>Responsável pelos dados</h2>
-      <p><Pending>Razão social, CNPJ e contato do encarregado (LGPD) a definir</Pending></p>
-      <h2>Cookies e ferramentas de análise</h2>
-      <p><Pending>A definir conforme as ferramentas utilizadas</Pending></p>
+      <p>{STORE.name}, CNPJ {STORE.cnpj}, com sede em {STORE.address}. Contato para assuntos de privacidade: {STORE.email}.</p>
+      <h2>Dados coletados</h2>
+      <p>Este site não possui cadastro nem armazena dados de cartão. Ao finalizar a compra, nome, CPF, endereço, telefone e e-mail são informados no ambiente seguro do checkout do nosso parceiro de pagamentos, que processa o pagamento com criptografia.</p>
+      <h2>Para que usamos</h2>
+      <p>Usamos esses dados apenas para processar e entregar o pedido, emitir nota fiscal, enviar o rastreio e prestar atendimento. Não vendemos nem compartilhamos seus dados para outras finalidades; eles são repassados só a parceiros necessários, como o de pagamento e a transportadora.</p>
+      <h2>Contato pelo WhatsApp e e-mail</h2>
+      <p>Mensagens que você nos envia são usadas apenas para responder ao seu atendimento.</p>
+      <h2>Cookies</h2>
+      <p>O site pode usar cookies essenciais para funcionar corretamente. Caso passemos a usar ferramentas de análise ou anúncios, esta política será atualizada.</p>
+      <h2>Seus direitos</h2>
+      <p>Você pode pedir acesso, correção ou exclusão dos seus dados, ou tirar dúvidas, pelo e-mail {STORE.email}. Responderemos em até 15 dias.</p>
     </PageShell>
   ),
 });
